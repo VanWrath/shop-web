@@ -1,0 +1,10 @@
+.product {
+    max-width: 15rem;
+    max-height: 30rem;
+    padding: 20px;
+    margin: 1rem;
+}
+
+.product img {
+    max-height: 10rem;
+}
