@@ -15,10 +15,12 @@ class WishList extends Component {
         this.createWishList = this.createWishList.bind(this);
         this. onWishListChanged = this. onWishListChanged.bind(this);
     }
+
     //runs add observer code when component mounts to app.
     componentDidMount() {
         ns.addObserver(NOTIF_WISHLIST_CHANGED, this, this.onWishListChanged);
     }
+
     //runs remove observer code when component unmounts to app.
     componentWillUnmount() {
         ns.removeObserver(this. NOTIF_WISHLIST_CHANGED);

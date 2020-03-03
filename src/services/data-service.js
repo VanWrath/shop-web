@@ -6,7 +6,7 @@ let instance = null;
 //data for items in the wishlist.
 var wishList = [];
 
-//Singleton class
+//Singleton class to manage wishlist component
 class DataService {
     constructor() {
         if (!instance) {

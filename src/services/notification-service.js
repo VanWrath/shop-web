@@ -1,4 +1,4 @@
-//Notification system implemented using oberserver pattern
+//Notification system implemented using oberserver pattern to notify other components of changes
 export const NOTIF_WISHLIST_CHANGED = "notif_wishlist_changed";
 
 var observers = {};
