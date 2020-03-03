@@ -48,9 +48,9 @@ class Product extends Component {
 	render() {
 		var btnClass;
 		if (this.state.onWishList) {
-			btnClass = 'btn btn-danger mx-auto';
+			btnClass = 'btn btn-danger';
 		} else {
-			btnClass = 'btn btn-primary mx-auto';
+			btnClass = 'btn btn-primary';
 		}
 
 		const pathUrl = '/' + this.props.product._id;

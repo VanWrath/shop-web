@@ -53,7 +53,7 @@ export default class Products extends Component {
 	render() {
 		//console.log(this.state.products);
 		return (
-			<div className="container-fluid App-main py-3">
+			<div className="container-fluid App-main py-3 text-center">
 				<h1>Products</h1>
 				<h3>{this.state.name}</h3>
 				<div className="row">

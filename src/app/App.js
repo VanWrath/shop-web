@@ -9,7 +9,10 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 //import logo from './logo.svg';
 import './App.css';
 import HttpService from '../services/http-service';
+//import { useAuth0 } from '../react-auth0-spa';
+
 //Components
+import NavBar from '../components/navBar';
 import Product from '../product/product';
 import WishList from '../wishlist/wishlist';
 import Products from '../product/products';
@@ -82,10 +85,18 @@ class App extends Component {
 		//const productsData = this.state.products[0];
 		console.log(this.state.products);
 
-		if (this.state.dataLoaded) {
-			return (
-				//Navbar
+		if (this.state.loading) {
+			return <div>Loading...</div>;
+		}
+
+		return (
+			//Navbar
+			<Router>
 				<div>
+					<header>
+						<NavBar />
+					</header>
+
 					<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 						<Link to="/" className="navbar-brand">
 							The Hobby Shop
@@ -103,17 +114,18 @@ class App extends Component {
 						</button>
 
 						<div className="collapse navbar-collapse" id="navbarSupportedContent">
-							<form className="form-inline my-sm-2">
+							<form className="form-inline my-2 w-75">
 								<input
-									className="form-control mr-sm-2 my-sm-2"
+									className="form-control m-2 w-75"
 									type="search"
 									placeholder="Search"
 									aria-label="Search"
 								/>
-								<button className="btn btn-outline-success my2-2 my-sm-2" type="submit">
+								<button className="btn btn-outline-success m-2" type="submit">
 									Search
 								</button>
 							</form>
+
 							<ul className="navbar-nav ml-auto">
 								<li className="nav-item dropdown">
 									<a
@@ -131,20 +143,9 @@ class App extends Component {
 										<Link to="/login" className="dropdown-item">
 											Login
 										</Link>
-										<Link to="/signup" className="dropdown-item">
+										<Link to="/login" className="dropdown-item">
 											Sign Up
 										</Link>
-										{/*add conditional rendering
-										<a className="dropdown-item" href="#">
-											Login
-										</a>
-										<a className="dropdown-item" href="#">
-											Signup
-										</a>
-										<a className="nav-link" href="#">
-										Cart
-									</a>
-										*/}
 									</div>
 								</li>
 								<li className="nav-item">
@@ -190,10 +191,8 @@ class App extends Component {
 						</div>
 					</footer>
 				</div>
-			);
-		} else {
-			return <h3 className="m-3">Loading...</h3>;
-		}
+			</Router>
+		);
 	}
 }
 
