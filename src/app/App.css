@@ -46,3 +46,7 @@ footer ul {
 	padding: 0;
 	text-align: left;
 }
+
+.loading {
+	height: 100vh;
+}

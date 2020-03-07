@@ -18,7 +18,13 @@ import WishList from '../wishlist/wishlist';
 import Products from '../product/products';
 import ProductPage from '../Product-page/productPage';
 import CartPage from '../cart-page/cartPage';
+import Profile from '../components/Profile';
+import PrivateRoute from '../components/PrivateRoute';
+import Loading from '../components/Loading';
+
+//Utility
 import Authentication from '../authentication/authentication';
+import history from '../utils/history';
 
 const http = new HttpService();
 
@@ -86,82 +92,24 @@ class App extends Component {
 		console.log(this.state.products);
 
 		if (this.state.loading) {
-			return <div>Loading...</div>;
+			return <Loading />;
 		}
 
 		return (
 			//Navbar
-			<Router>
+			<Router history={history}>
 				<div>
 					<header>
 						<NavBar />
 					</header>
-
-					<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-						<Link to="/" className="navbar-brand">
-							The Hobby Shop
-						</Link>
-						<button
-							className="navbar-toggler"
-							type="button"
-							data-toggle="collapse"
-							data-target="#navbarSupportedContent"
-							aria-controls="navbarSupportedContent"
-							aria-expanded="false"
-							aria-label="Toggle navigation"
-						>
-							<span className="navbar-toggler-icon" />
-						</button>
-
-						<div className="collapse navbar-collapse" id="navbarSupportedContent">
-							<form className="form-inline my-2 w-75">
-								<input
-									className="form-control m-2 w-75"
-									type="search"
-									placeholder="Search"
-									aria-label="Search"
-								/>
-								<button className="btn btn-outline-success m-2" type="submit">
-									Search
-								</button>
-							</form>
-
-							<ul className="navbar-nav ml-auto">
-								<li className="nav-item dropdown">
-									<a
-										className="nav-link dropdown-toggle"
-										href="#"
-										id="navbarDropdown"
-										role="button"
-										data-toggle="dropdown"
-										aria-haspopup="true"
-										aria-expanded="false"
-									>
-										Account
-									</a>
-									<div className="dropdown-menu" aria-labelledby="navbarDropdown">
-										<Link to="/login" className="dropdown-item">
-											Login
-										</Link>
-										<Link to="/login" className="dropdown-item">
-											Sign Up
-										</Link>
-									</div>
-								</li>
-								<li className="nav-item">
-									<Link to="/cart" className="nav-link">
-										Cart
-									</Link>
-								</li>
-							</ul>
-						</div>
-					</nav>
 
 					{/*Switch render */}
 					<Switch>
 						<Route path="/login">
 							<Authentication />
 						</Route>
+
+						<PrivateRoute path="/profile" component={Profile} />
 
 						<Route path="/cart">
 							<CartPage />
@@ -181,10 +129,10 @@ class App extends Component {
 										<b>Navigation</b>
 									</li>
 									<li>
-										<a href="">Products</a>
+										<Link to="/">Products</Link>
 									</li>
 									<li>
-										<a href="">Acccount</a>
+										<Link to="/profile">Account</Link>
 									</li>
 								</ul>
 							</div>

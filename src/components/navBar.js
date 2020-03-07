@@ -30,7 +30,7 @@ const NavBar = () => {
 					</button>
 				</form>
 
-				<ul className="navbar-nav ml-auto">
+				<ul className="navbar-nav ml-auto pr-4">
 					<li className="nav-item dropdown">
 						<a
 							className="nav-link dropdown-toggle"
@@ -43,11 +43,26 @@ const NavBar = () => {
 						>
 							Account
 						</a>
-						<div className="dropdown-menu" aria-labelledby="navbarDropdown">
-							{!this.state.isAuthenticated && (
-								<button onClick={() => loginWithRedirect({})}>Log in</button>
+						<div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							{!isAuthenticated && (
+								<button onClick={() => loginWithRedirect({})} className="dropdown-item">
+									Log in
+								</button>
 							)}
-							{isAuthenticated && <button onClick={() => logout()}>Log oout</button>}
+
+							{isAuthenticated && (
+								<span>
+									<Link to="/profile" className="dropdown-item">
+										Profile
+									</Link>
+								</span>
+							)}
+
+							{isAuthenticated && (
+								<button onClick={() => logout()} className="dropdown-item">
+									Log out
+								</button>
+							)}
 
 							{/*
                                 <Link to="/login" className="dropdown-item">
