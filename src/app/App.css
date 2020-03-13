@@ -50,3 +50,7 @@ footer ul {
 .loading {
 	height: 100vh;
 }
+
+.z-1500 {
+	z-index: 1500;
+}

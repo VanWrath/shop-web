@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { useParams } from 'react-router-dom';
+//import { useParams } from 'react-router-dom';
 
 export default class ProductPage extends Component {
 	constructor(props) {
@@ -20,8 +20,6 @@ export default class ProductPage extends Component {
 	}
 
 	componentWillMount() {
-		console.log('Rendering Product Details');
-		console.log(this.props);
 		const { _id, imgUrl, title, price, description } = this.props.location.state.product;
 		this.setState({ _id, imgUrl, title, price, description });
 	}
@@ -40,13 +38,13 @@ export default class ProductPage extends Component {
 			<div className="container-fluid">
 				<div className="row m-4">
 					<div className="col-md-3">
-						<img src={this.state.imgUrl} alt="Product Image" className="img-fluid" />
+						<img src={this.state.imgUrl} alt="Product" className="img-fluid" />
 					</div>
 
 					<div className="col-md-6 text-left px-3">
 						<h3>{this.state.title}</h3>
 						<p>
-							by <a href="">{this.state.seller}</a> <br />
+							by <a href="#">{this.state.seller}</a> <br />
 							Rating: {this.state.ratings}/5
 						</p>
 						<hr />
@@ -87,7 +85,7 @@ export default class ProductPage extends Component {
 							<button id="add" type="submit" className="btn btn-primary m-2">
 								Add to cart
 							</button>
-							<a href="" className="btn btn-primary m-2">
+							<a href="#" className="btn btn-primary m-2">
 								Cart
 							</a>
 						</form>

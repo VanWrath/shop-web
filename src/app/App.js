@@ -14,13 +14,15 @@ import HttpService from '../services/http-service';
 //Components
 import NavBar from '../components/navBar';
 import Product from '../product/product';
-import WishList from '../wishlist/wishlist';
+//import WishList from '../wishlist/wishlist';
 import Products from '../product/products';
 import ProductPage from '../Product-page/productPage';
 import CartPage from '../cart-page/cartPage';
 import Profile from '../components/Profile';
 import PrivateRoute from '../components/PrivateRoute';
 import Loading from '../components/Loading';
+import ExternalApi from '../views/ExternalApi';
+import Footer from '../components/footer';
 
 //Utility
 import Authentication from '../authentication/authentication';
@@ -80,7 +82,7 @@ class App extends Component {
 
 	findProductById(id) {
 		for (let i = 0; i < this.state.products.length; i++) {
-			if (this.state.products[i]._id == id) {
+			if (this.state.products[i]._id === id) {
 				return this.state.products[i];
 			}
 		}
@@ -89,7 +91,6 @@ class App extends Component {
 
 	render() {
 		//const productsData = this.state.products[0];
-		console.log(this.state.products);
 
 		if (this.state.loading) {
 			return <Loading />;
@@ -99,9 +100,7 @@ class App extends Component {
 			//Navbar
 			<Router history={history}>
 				<div>
-					<header>
-						<NavBar />
-					</header>
+					<NavBar />
 
 					{/*Switch render */}
 					<Switch>
@@ -110,6 +109,8 @@ class App extends Component {
 						</Route>
 
 						<PrivateRoute path="/profile" component={Profile} />
+
+						<PrivateRoute path="/external-api" component={ExternalApi} />
 
 						<Route path="/cart">
 							<CartPage />
@@ -120,24 +121,7 @@ class App extends Component {
 						<Route path="/" render={(routeProps) => <Products products={this.state.products} />} />
 					</Switch>
 
-					{/*Footer*/}
-					<footer className="py-5">
-						<div className="container">
-							<div className="row">
-								<ul>
-									<li>
-										<b>Navigation</b>
-									</li>
-									<li>
-										<Link to="/">Products</Link>
-									</li>
-									<li>
-										<Link to="/profile">Account</Link>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</footer>
+					<Footer />
 				</div>
 			</Router>
 		);

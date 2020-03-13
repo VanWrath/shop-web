@@ -72,12 +72,12 @@ class Product extends Component {
 
 					<p className="card-text">Price: ${this.props.product.price}</p>
 
-					<a href="#" onClick={() => this.onButtonClicked()} className={btnClass}>
+					<button onClick={() => this.onButtonClicked()} className={btnClass}>
 						{this.state.onWishList ? 'Remove From Wishlist' : 'Add To Wishlist'}
-					</a>
-					<a href="#" onClick={() => this.addToCart()} className="btn btn-primary m-2">
+					</button>
+					<button onClick={() => this.addToCart()} className="btn btn-primary m-2">
 						Add to cart
-					</a>
+					</button>
 					<Link to="/cart" className="btn btn-primary mx-1">
 						Cart
 					</Link>

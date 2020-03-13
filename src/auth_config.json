@@ -1,4 +1,5 @@
 {
 	"domain": "dev-e4xqtzrx.auth0.com",
-	"clientId": "VqvwHpTQMRPJ2hu8KeFsRjY1PjATpwsh"
+	"clientId": "VqvwHpTQMRPJ2hu8KeFsRjY1PjATpwsh",
+	"audience": "https://api.kylevannarath.ca"
 }
