@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Review from './review';
 //import { useParams } from 'react-router-dom';
 
 export default class ProductPage extends Component {
@@ -12,7 +13,16 @@ export default class ProductPage extends Component {
 			description : 'Description',
 			ratings     : 5,
 			quantity    : 0,
-			_id         : 'id'
+			_id         : 'id',
+			reviews     : [
+				{
+					user   : 'User',
+					title  : 'Great Product',
+					date   : new Date('6/8/2020'),
+					review :
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+				}
+			]
 		};
 
 		this.handleQuantityChange = this.handleQuantityChange.bind(this);
@@ -83,17 +93,23 @@ export default class ProductPage extends Component {
 								</div>
 							</div>
 							<button id="add" type="submit" className="btn btn-primary m-2">
-								Add to cart
+								Add to Cart
 							</button>
-							<a href="#" className="btn btn-primary m-2">
-								Cart
-							</a>
+							<button id="add" type="submit" className="btn btn-primary m-2">
+								Add to Wishlist
+							</button>
 						</form>
 					</div>
 				</div>
 				<hr />
-				<div>
-					<h3>Reviews</h3>
+				<div class="py-5 row">
+					<div class="col-3">
+						<h3>Reviews</h3>
+					</div>
+
+					<div class="col-9">
+						<Review data={this.state.reviews[0]} />
+					</div>
 				</div>
 			</div>
 		);
