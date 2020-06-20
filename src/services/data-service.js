@@ -1,4 +1,4 @@
-import NotificationService, {NOTIF_WISHLIST_CHANGED} from './notification-service';
+import NotificationService, { NOTIF_WISHLIST_CHANGED } from './notification-service';
 
 let ns = new NotificationService();
 //instance used too store the only instance of DataService.
@@ -8,37 +8,37 @@ var wishList = [];
 
 //Singleton class to manage wishlist component
 class DataService {
-    constructor() {
-        if (!instance) {
-            instance = this;
-        }
+	constructor() {
+		if (!instance) {
+			instance = this;
+		}
 
-        return instance;
-    }
+		return instance;
+	}
 
-    isItemOnWishList = (item) => {
-        for (var x = 0; x < wishList.length; x++) {
-            if (wishList[x]._id === item._id) {
-                return true;
-            }
-         }
-         return false;
-    }
+	isItemOnWishList = (item) => {
+		for (var x = 0; x < wishList.length; x++) {
+			if (wishList[x]._id === item._id) {
+				return true;
+			}
+		}
+		return false;
+	};
 
-    addWishListItem = item => {
-        wishList.push(item);
-        ns.postNotification(NOTIF_WISHLIST_CHANGED, wishList);
-    }
+	addWishListItem = (item) => {
+		wishList.push(item);
+		ns.postNotification(NOTIF_WISHLIST_CHANGED, wishList);
+	};
 
-    removeWishListItem = item => {
-        for (var x = 0; x < wishList.length; x++){
-            if (wishList[x]._id === item._id) {
-                wishList.splice(x, 1);
-                ns.postNotification(NOTIF_WISHLIST_CHANGED, wishList);
-                break;
-            }
-        }
-    }
+	removeWishListItem = (item) => {
+		for (var x = 0; x < wishList.length; x++) {
+			if (wishList[x]._id === item._id) {
+				wishList.splice(x, 1);
+				ns.postNotification(NOTIF_WISHLIST_CHANGED, wishList);
+				break;
+			}
+		}
+	};
 }
 
 export default DataService;

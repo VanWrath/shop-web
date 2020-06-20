@@ -16,13 +16,14 @@ const Profile = () => {
 			<div className="container py-5">
 				<div className="row">
 					<div className="col-3">
-						<img src={user.picture} alt="Profile" className="img-fluid" />
+						<img src={user.picture} alt="Profile" className="card-img" />
 					</div>
 
 					<div className="col-9">
 						<h2>{user.name}</h2>
 						<p>{user.email}</p>
-						<code>{JSON.stringify(user, null, 2)}</code>
+
+						<div />
 					</div>
 				</div>
 			</div>

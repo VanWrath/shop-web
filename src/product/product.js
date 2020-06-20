@@ -57,7 +57,7 @@ class Product extends Component {
 
 		return (
 			<div className="card product mx-auto">
-				<img className="card-img" src={this.props.product.imgUrl} alt="Product" />
+				<img className="card-img" src={this.props.product.imgUrl} alt="Product Image" />
 				<div className="card-block">
 					<Link
 						to={{
@@ -76,11 +76,8 @@ class Product extends Component {
 						{this.state.onWishList ? 'Remove From Wishlist' : 'Add To Wishlist'}
 					</button>
 					<button onClick={() => this.addToCart()} className="btn btn-primary m-2">
-						Add to cart
+						Add to Cart
 					</button>
-					<Link to="/cart" className="btn btn-primary mx-1">
-						Cart
-					</Link>
 				</div>
 			</div>
 		);
