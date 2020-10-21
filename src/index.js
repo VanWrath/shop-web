@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 //import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './app/App';
-import * as serviceWorker from './serviceWorker';
-import { Auth0Provider } from './react-auth0-spa';
+//import * as serviceWorker from './serviceWorker';
+import { Auth0Provider } from '@auth0/auth0-react';
 import config from './auth_config.json';
 import history from './utils/history';
 
@@ -18,10 +18,10 @@ const onRedirectCallBack = (appState) => {
 ReactDOM.render(
 	<Auth0Provider
 		domain={config.domain}
-		client_id={config.clientId}
-		redirect_uri={window.location.origin}
-		audience={config.audience}
-		onRedirectCallBack={onRedirectCallBack}
+		clientId={config.clientId}
+		redirectUri={window.location.origin}
+		scope="read:current_user update:current_user_metadata"
+		//onRedirectCallBack={onRedirectCallBack}
 	>
 		<App />
 	</Auth0Provider>,
@@ -31,4 +31,4 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+//serviceWorker.unregister();

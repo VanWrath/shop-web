@@ -12,21 +12,26 @@ class HttpService {
 		return promise;
 	};
 
-	updateUser = (data) => {
-		var options = {
-			method  : 'PATCH',
-			url     : 'https://dev-e4xqtzrx.auth0.com/api/v2/users/user_id',
-			headers : { authorization: 'Bearer ABCD', 'content-type': 'application/json' },
-			body    : { user_metadata: data },
-			json    : true
-		};
+	/*Data : {
+		token,
+		uid,
+		metadata	
+	}*/
+	// updateUser = (data) => {
+	// 	var options = {
+	// 		method  : 'PATCH',
+	// 		url     : 'https://dev-e4xqtzrx.auth0.com/api/v2/users/' + data.uid,
+	// 		headers : { authorization: 'Bearer ' + data.token.toString(), 'content-type': 'application/json' },
+	// 		body    : { user_metadata: data.metadata },
+	// 		json    : true
+	// 	};
 
-		request(options, (error, res, body) => {
-			if (error) throw new Error(error);
+	// 	request(options, (error, res, body) => {
+	// 		if (error) throw new Error(error);
 
-			console.log(body);
-		});
-	};
+	// 		console.log(body);
+	// 	});
+	// };
 }
 
 export default HttpService;

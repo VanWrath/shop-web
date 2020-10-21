@@ -31,7 +31,7 @@ export default class Products extends Component {
 			(data) => {
 				//setState reloads the entire component
 				self.setState({ products: data });
-				//console.log(products);
+				//console.log(data);
 			},
 			(err) => {
 				console.log('could not load data');

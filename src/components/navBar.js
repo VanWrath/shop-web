@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth0 } from '../react-auth0-spa';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const NavBar = () => {
 	const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
@@ -52,7 +52,7 @@ const NavBar = () => {
 							<div className="dropdown-menu z-1500" aria-labelledby="navbarDropdownMenuLink">
 								{!isAuthenticated && (
 									<button onClick={() => loginWithRedirect({})} className="dropdown-item">
-										Log in
+										Log In
 									</button>
 								)}
 
@@ -68,7 +68,7 @@ const NavBar = () => {
 								)}
 
 								{isAuthenticated && (
-									<button onClick={() => logout()} className="dropdown-item">
+									<button onClick={() => logout({ returnTo: window.location.origin })} className="dropdown-item">
 										Log out
 									</button>
 								)}

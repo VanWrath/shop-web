@@ -1,18 +1,19 @@
 // src/components/Profile.js
 
 import React, { Fragment } from 'react';
-import { useAuth0 } from '../react-auth0-spa';
+import { useAuth0 } from '@auth0/auth0-react';
 import Loading from './Loading';
 
 const Profile = () => {
-	const { loading, user } = useAuth0();
+	const { loading, user, isAuthenticated } = useAuth0();
 
 	if (loading || !user) {
 		return <Loading />;
 	}
 
 	return (
-		<Fragment>
+		isAuthenticated && (
+			<Fragment>
 			<div className="container py-5">
 				<div className="row">
 					<div className="col-3">
@@ -28,6 +29,8 @@ const Profile = () => {
 				</div>
 			</div>
 		</Fragment>
+		)
+		
 	);
 };
 
