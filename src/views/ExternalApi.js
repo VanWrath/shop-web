@@ -54,6 +54,7 @@ const ExternalApiComponent = () => {
 	const callApi = async () => {
 		try {
 			const token = await getAccessTokenSilently();
+			console.log(token);
 
 			const response = await fetch('http://localhost:3003/api/external', {
 				headers : {
@@ -99,12 +100,12 @@ const ExternalApiComponent = () => {
 */
 	return (
 		<div className="container my-5">
-        	{state.error === "consent_required" && (
+        	{/* {state.error === "consent_required" && (
            <div className='alert alert-warning'>
             You need to{" "}
             <a
               href="#/"
-              class="alert-link"
+              className="alert-link"
               onClick={(e) => handle(e, handleConsent)}
             >
               consent to get access to users api
@@ -117,13 +118,13 @@ const ExternalApiComponent = () => {
             You need to{" "}
             <a
               href="#/"
-              class="alert-link"
+              className="alert-link"
               onClick={(e) => handle(e, handleLoginAgain)}
             >
               log in again
             </a>
           </div>
-        )}
+        )} */}
 
 		<h1>External API</h1>
         <p>
@@ -132,14 +133,14 @@ const ExternalApiComponent = () => {
           the API's audience value.
         </p>
 
-			<button onClick={callApi} className="mx-2">
+			<button onClick={callApi} className="mx-2 btn btn-primary">
 				Ping API
 			</button>
 			
 		<div className="result-block-container">
         {state.showResult && (
           <div className="result-block" data-testid="api-result">
-            <h6 className="muted">Result</h6>
+            <h6 className="text-muted">Result</h6>
             <div className='bg-warning text-dark'>
               <span>{JSON.stringify(state.apiMessage, null, 2)}</span>
             </div>
