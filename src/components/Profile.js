@@ -19,7 +19,9 @@ const Profile = () => {
 			  scope: "read:current_user",
 			});
 			
+
 			const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
+			console.log("userSub: " + user.sub);
 	  
 			const metadataResponse = await fetch(userDetailsByIdUrl, {
 			  headers: {
@@ -28,7 +30,7 @@ const Profile = () => {
 			});
 			
 			const { user_metadata } = await metadataResponse.json();
-			console.log("Metadata: "+user_metadata);
+			console.log("Metadata: "+ user_metadata);
 	  
 			setUserMetadata(user_metadata);
 		  } catch (e) {
@@ -60,7 +62,7 @@ const Profile = () => {
 						<h3>User Metadata</h3>
 						{userMetadata ? (
           					<pre>{JSON.stringify(userMetadata, null, 2)}</pre>
-        						) : ("No user metadata defined")}
+						) : ("No user metadata defined")}
 
 						<div />
 					</div>

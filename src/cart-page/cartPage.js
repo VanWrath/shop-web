@@ -72,7 +72,7 @@ export default class CartPage extends Component {
 			<div className="container my-5 text-center">
 				<h1>Shopping Cart</h1>
 				<hr />
-				{this.state.products.length == 0 ? <h3>Your shopping cart is empty.</h3> : this.listProducts()}
+				{this.state.products.length === 0 ? <h3>Your shopping cart is empty.</h3> : this.listProducts()}
 				<div className="text-right">
 					<p>Subtotal: $ {this.state.subtotal}</p>
 					<p>HST: $ {this.state.hst}</p>

@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const NavBar = () => {
-	const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+	const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
+	
+	const logoutWithRedirect = () =>
+    logout({
+      returnTo: window.location.origin,
+    });
 
 	return (
 		<header>
@@ -51,7 +56,7 @@ const NavBar = () => {
 							</a>
 							<div className="dropdown-menu z-1500" aria-labelledby="navbarDropdownMenuLink">
 								{!isAuthenticated && (
-									<button onClick={() => loginWithRedirect({})} className="dropdown-item">
+									<button onClick={() => loginWithRedirect()} className="dropdown-item">
 										Log In
 									</button>
 								)}
@@ -64,14 +69,13 @@ const NavBar = () => {
 										<Link to="/external-api" className="dropdown-item">
 											External API
 										</Link>
+										<button onClick={() => logout({ returnTo: window.location.origin })} className="dropdown-item">
+											Log out
+										</button>
 									</span>
 								)}
 
-								{isAuthenticated && (
-									<button onClick={() => logout({ returnTo: window.location.origin })} className="dropdown-item">
-										Log out
-									</button>
-								)}
+								{isAuthenticated}
 
 								{/*
                                 <Link to="/login" className="dropdown-item">

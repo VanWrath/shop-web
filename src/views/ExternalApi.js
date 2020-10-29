@@ -7,7 +7,7 @@ import HttpService from '../services/http-service';
 
 const http = new HttpService();
 
-const ExternalApiComponent = () => {
+export const ExternalApiComponent = () => {
 	const [state, setState] = useState({
 		showResult: false,
 		apiMessage: "",
@@ -54,12 +54,11 @@ const ExternalApiComponent = () => {
 	const callApi = async () => {
 		try {
 			const token = await getAccessTokenSilently();
-			console.log(token);
 
 			const response = await fetch('http://localhost:3003/api/external', {
 				headers : {
-					Authorization : `Bearer ${token}`
-				}
+					Authorization : `Bearer ${token}`,
+				},
 			});
 			const responseData = await response.json();
 
@@ -100,7 +99,7 @@ const ExternalApiComponent = () => {
 */
 	return (
 		<div className="container my-5">
-        	{/* {state.error === "consent_required" && (
+        {state.error === "consent_required" && (
            <div className='alert alert-warning'>
             You need to{" "}
             <a
@@ -124,7 +123,7 @@ const ExternalApiComponent = () => {
               log in again
             </a>
           </div>
-        )} */}
+        )}
 
 		<h1>External API</h1>
         <p>
@@ -137,7 +136,7 @@ const ExternalApiComponent = () => {
 				Ping API
 			</button>
 			
-		<div className="result-block-container">
+		<div className="result-block-container mt-4">
         {state.showResult && (
           <div className="result-block" data-testid="api-result">
             <h6 className="text-muted">Result</h6>
