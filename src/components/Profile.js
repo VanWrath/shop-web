@@ -59,10 +59,12 @@ const Profile = () => {
 						<h2>{user.name}</h2>
 						<p>{user.email}</p>
 
-						<h3>User Metadata</h3>
-						{userMetadata ? (
-          					<pre>{JSON.stringify(userMetadata, null, 2)}</pre>
-						) : ("No user metadata defined")}
+						<h3>Address</h3>
+						{userMetadata.address ? (
+          					<pre>{JSON.stringify(userMetadata.address, null, 2)}</pre>
+						) : ("No address added")}
+
+						<Link to="/editAddress" className="btn btn-primary px-3">Edit</Link>
 
 						<div />
 					</div>
