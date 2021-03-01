@@ -1,4 +1,8 @@
 import 'whatwg-fetch';
+import Axios from 'axios';
+import { useAuth0 } from '@auth0/auth0-react';
+import config from '../auth_config.json';
+
 var request = require('request');
 
 //encapsulates the getProducts service.
@@ -11,6 +15,23 @@ class HttpService {
 		});
 		return promise;
 	};
+
+	//not working!!!!!!!!!!!!!!!!!!
+	updateMetadata = (data) => {
+		const { user } = useAuth0();
+		var options = {
+			method: 'PATCH',
+			url: config.audience + 'users/' + user.sub,
+			headers: {authorization: 'Bearer ABCD', 'content-type': 'application/json'},
+			data: {user_metadata: data }
+		};
+
+		Axios.request(options).then((response) => {
+			console.log(JSON.stringify(response.data));
+		}).catch((error) => {
+			console.error(error);
+		})
+	}
 
 	/*Data : {
 		token,

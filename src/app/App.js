@@ -4,6 +4,8 @@
 * nodemon server.js
 */
 
+//"https://api.kylevannarath.ca"
+
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 //import logo from './logo.svg';
@@ -20,6 +22,7 @@ import ProductPage from '../Product-page/productPage';
 import CartPage from '../cart-page/cartPage';
 import Profile from '../components/Profile';
 import PrivateRoute from '../components/PrivateRoute';
+import EditAddress from '../components/editAddress';
 import Loading from '../components/Loading';
 import ExternalApi from '../views/ExternalApi';
 import Footer from '../components/footer';
@@ -56,7 +59,7 @@ class App extends Component {
 		http.getProducts().then(
 			(data) => {
 				//setState reloads the entire component
-				console.log('Data loaded.');
+				//console.log('Data loaded.');
 				self.setState({
 					products   : data,
 					dataLoaded : true
@@ -101,7 +104,6 @@ class App extends Component {
 			<Router history={history}>
 				<div>
 					<NavBar />
-
 					{/*Switch render */}
 					<Switch>
 						<Route path="/login">
@@ -115,6 +117,8 @@ class App extends Component {
 						<Route path="/cart">
 							<CartPage />
 						</Route>
+
+						<PrivateRoute path="/editAddress" component={EditAddress}/>
 
 						<Route path="/:id" component={ProductPage} />
 

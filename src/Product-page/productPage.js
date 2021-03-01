@@ -102,12 +102,12 @@ export default class ProductPage extends Component {
 					</div>
 				</div>
 				<hr />
-				<div class="py-5 row">
-					<div class="col-3">
+				<div className="py-5 row">
+					<div className="col-3">
 						<h3>Reviews</h3>
 					</div>
 
-					<div class="col-9">
+					<div className="col-9">
 						<Review data={this.state.reviews[0]} />
 					</div>
 				</div>
