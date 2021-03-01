@@ -2,7 +2,7 @@
   "name": "swag-shop-web",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://www.kylevannarath.ca/shop-web",
+  "homepage": "http://www.kylevannarath.ca/shop-web/",
   "dependencies": {
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
