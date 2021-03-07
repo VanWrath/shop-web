@@ -53,8 +53,8 @@ class App extends Component {
     return (
       <div className="App">
      
-        <nav class="navbar navbar-dark bg-dark">
-          <a class="navbar-brand" href="#">Welcome to The Hobby Shop</a>
+        <nav className="navbar navbar-dark bg-dark">
+          <a className="navbar-brand" href="#">Welcome to The Hobby Shop</a>
         </nav>
         <div className="container-fluid App-main">
           <div className="row">

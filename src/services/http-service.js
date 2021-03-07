@@ -5,9 +5,9 @@ import { reject } from 'q';
 class HttpService {
     getProducts = () => {
         var promise = new Promise((resolve, reject) => {
-            fetch('http://localhost:3003/product')
+            // fetch('http://localhost:5000/product')
+            fetch('https://hobby-shop.herokuapp.com/product')
             .then(res => {
-                //console.log(res.json());
                 resolve(res.json());
             })
         });
